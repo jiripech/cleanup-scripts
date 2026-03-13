@@ -1,0 +1,241 @@
+/* =====================================================
+   Cleanup Scripts – Popup Styles
+   ===================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
+  color: #222;
+  background: #f7f7f7;
+  width: 380px;
+  padding: 12px 16px 16px;
+}
+
+h1 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a73e8;
+  letter-spacing: 0.3px;
+}
+
+h2 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 12px 0;
+}
+
+section {
+  margin-bottom: 4px;
+}
+
+.security-note {
+  font-size: 11px;
+  color: #b06000;
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 4px;
+  padding: 5px 8px;
+  margin: 6px 0 4px;
+}
+
+/* ---- Form ---- */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 3px;
+  color: #555;
+}
+
+.form-group input[type="text"] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 12px;
+  transition: border-color 0.15s;
+}
+
+.form-group input[type="text"]:focus {
+  outline: none;
+  border-color: #1a73e8;
+}
+
+.form-group input[type="file"] {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* ---- Buttons ---- */
+
+.btn {
+  display: inline-block;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-primary {
+  background-color: #1a73e8;
+  color: #fff;
+  margin-top: 4px;
+}
+
+.btn-primary:hover {
+  background-color: #1558b0;
+}
+
+.btn-run {
+  background-color: #34a853;
+  color: #fff;
+  margin-top: 4px;
+}
+
+.btn-run:hover {
+  background-color: #267d3d;
+}
+
+.btn-run:disabled {
+  background-color: #9dc8af;
+  cursor: not-allowed;
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  color: #d93025;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  border-radius: 3px;
+  transition: background-color 0.1s;
+}
+
+.btn-delete:hover {
+  background-color: #fce8e6;
+}
+
+.btn-run-single {
+  background: none;
+  border: 1px solid #34a853;
+  color: #34a853;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.1s;
+}
+
+.btn-run-single:hover {
+  background-color: #e6f4ea;
+}
+
+/* ---- Status messages ---- */
+
+.status-msg {
+  font-size: 11px;
+  margin-top: 5px;
+  min-height: 16px;
+}
+
+.status-msg.success {
+  color: #34a853;
+}
+
+.status-msg.error {
+  color: #d93025;
+}
+
+/* ---- Script list ---- */
+
+#scripts-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.script-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 6px 8px;
+}
+
+.script-item.uri-match {
+  border-color: #34a853;
+  background: #f0faf3;
+}
+
+.script-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.script-info .script-name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.script-info .script-uri {
+  color: #888;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.script-actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ---- Current URL display ---- */
+
+.current-url {
+  font-size: 11px;
+  color: #666;
+  word-break: break-all;
+  margin-bottom: 6px;
+}
+
+.empty-msg {
+  color: #999;
+  font-size: 12px;
+  font-style: italic;
+}
