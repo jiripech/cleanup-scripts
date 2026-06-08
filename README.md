@@ -1,25 +1,26 @@
-# Cleanup Scripts – Chrome Extension
+# The Cleanup Scripts project
 
-A Chrome extension that lets you load JavaScript files and execute them on pages matching a URI pattern – no more copy-pasting into the DevTools console.
+## TL;DR
 
-Originally designed for cookie-consent cleanup scripts, but works for any JavaScript you want to run on a specific site.
+**Cookie Consents Cleanup scripts** to be executed by *copy-pasting* them to the Developer Tools JS Console.
 
----
+## Explanation
 
-## Features
+I felt the necessity to automate unchecking checkboxes on all sites using Consent Management Platforms annoying users just to their owners be able to legally sell the user's data. At least some of them.
 
-| Feature | Description |
-|---|---|
-| **Load a JS file** | Pick any `.js` file from your disk via the popup. |
-| **URI pattern binding** | Associate the script with a URL (or any substring of a URL) so it only runs on the right pages. |
-| **One-click execution** | Click **Run Matching Scripts** to inject every script whose URI pattern matches the current page. |
-| **Per-script run** | Each saved script has its own ▶ Run button for targeted execution. |
-| **Persistent storage** | Scripts are stored in `chrome.storage.local` – they survive browser restarts. |
-| **Visual match highlighting** | Scripts that match the current page are highlighted in green. |
+It was a kickstart for writing a browser plugin to execute these scripts by a single click.
+
+## Vibe coding disclaimer
+
+Since I might have been the laziest person ever lived on the Earth and I also lived here with a [Glioblastoma](https://en.wikipedia.org/wiki/Glioblastoma "Wikipedia: Glioblastoma"), so my ability to code was far from ideal, I used various "AI" platforms to help me write the code.
 
 ---
 
-## Installation (Developer Mode)
+## Chrome Extension
+
+The plugin is now here. Load a `.js` file, bind it to a URI pattern, and execute it on matching pages with one click – no more copy-pasting into the DevTools console.
+
+### Installation (Developer Mode)
 
 1. Clone or download this repository.
 2. Open Chrome and go to `chrome://extensions/`.
@@ -27,14 +28,11 @@ Originally designed for cookie-consent cleanup scripts, but works for any JavaSc
 4. Click **Load unpacked** and select the root folder of this repository.
 5. The **Cleanup Scripts** icon will appear in your toolbar.
 
----
-
-## Usage
+### Usage
 
 1. Click the extension icon to open the popup.
 2. In the **Add Script** section:
-   - Enter a **URI Pattern** (e.g. `example.com` or `https://shop.example.com`).  
-     The pattern is matched as a case-insensitive substring of the page URL.
+   - Enter a **URI Pattern** (e.g. `example.com` or `https://shop.example.com`).
    - Choose a **JavaScript File** (`.js`) from your disk.
    - Optionally provide a human-readable **Script Name**.
    - Click **Save Script**.
@@ -42,9 +40,11 @@ Originally designed for cookie-consent cleanup scripts, but works for any JavaSc
 4. Open the popup – matching scripts are highlighted in green.
 5. Click **Run Matching Scripts** to execute all matching scripts, or click the ▶ **Run** button next to an individual script.
 
----
+### URI matching
 
-## File Structure
+Domain-boundary-aware: `example.com` matches `example.com` and `shop.example.com` but **not** `notexample.com` or `example.com.evil.site`. Patterns with a scheme (e.g. `https://example.com/path`) fall back to substring match. Patterns with a path component (e.g. `example.com/shop`) match hostname + path prefix.
+
+### File Structure
 
 ```
 cleanup-scripts/
@@ -56,28 +56,11 @@ cleanup-scripts/
 └── README.md
 ```
 
----
-
-## Permissions
+### Permissions
 
 | Permission | Why it's needed |
 |---|---|
 | `activeTab` | Access the URL of the current tab and target it for script injection. |
 | `scripting` | Inject JavaScript into the active tab (`chrome.scripting.executeScript`). |
 | `storage` | Persist saved scripts across browser sessions (`chrome.storage.local`). |
-
----
-
-## Writing a Cleanup Script
-
-Scripts run in the **page's global scope**, equivalent to pasting them in the DevTools console.  
-Example – remove a cookie-consent overlay:
-
-```js
-// cookie-cleanup.js
-document.querySelectorAll('.cookie-banner, #gdpr-overlay').forEach(el => el.remove());
-document.body.style.overflow = '';
-```
-
-Save the file, add it to the extension with the URI pattern `example.com`, and it will run on any `example.com` page at the click of a button.
 
