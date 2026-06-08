@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cleanup Scripts</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Cleanup Scripts</h1>
+
+  <section id="add-script-section">
+    <h2>Add Script</h2>
+    <div class="form-group">
+      <label for="uri-input">URI Pattern</label>
+      <input
+        type="text"
+        id="uri-input"
+        placeholder="e.g. example.com or https://example.com/shop"
+        title="Enter a URL or hostname. Scripts will run on pages whose URL contains this string."
+      />
+    </div>
+    <div class="form-group">
+      <label for="file-input">JavaScript File</label>
+      <input type="file" id="file-input" accept=".js" />
+    </div>
+    <div class="form-group">
+      <label for="script-name">Script Name (optional)</label>
+      <input type="text" id="script-name" placeholder="My cleanup script" />
+    </div>
+    <p class="security-note">⚠ Only load scripts from sources you trust. Scripts execute with full access to the page.</p>
+    <button id="save-btn" class="btn btn-primary">Save Script</button>
+    <p id="save-status" class="status-msg" aria-live="polite"></p>
+  </section>
+
+  <hr />
+
+  <section id="scripts-section">
+    <h2>Saved Scripts</h2>
+    <p id="no-scripts-msg" class="empty-msg">No scripts saved yet.</p>
+    <ul id="scripts-list" aria-label="Saved scripts"></ul>
+  </section>
+
+  <hr />
+
+  <section id="run-section">
+    <h2>Run on Current Page</h2>
+    <p id="current-url" class="current-url"></p>
+    <p id="run-status" class="status-msg" aria-live="polite"></p>
+    <button id="run-btn" class="btn btn-run">Run Matching Scripts</button>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>
